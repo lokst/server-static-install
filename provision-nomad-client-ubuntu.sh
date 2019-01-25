@@ -7,6 +7,10 @@ DOCKER_VERSION="17.03.2"
 UNAME="$(uname -r)"
 DEBIAN_FRONTEND=noninteractive
 
+unset UCF_FORCE_CONFFOLD
+export UCF_FORCE_CONFFNEW=YES
+ucf --purge /boot/grub/menu.lst
+
 is_xenial(){
   [ "$(cut -d'.' -f1 <<< $UNAME)" = "4" ] && return 0 || return 1
 }
